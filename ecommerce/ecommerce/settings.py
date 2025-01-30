@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'products',
     'drf_yasg',
+    "corsheaders",
 ]
 
 
@@ -51,7 +53,13 @@ REST_FRAMEWORK = {
 }
 
 
-
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),  # Token dura 60 minutos
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # Refresh Token dura 7 días
+    "ROTATE_REFRESH_TOKENS": True,  # Genera un nuevo refresh token al usarlo
+    "BLACKLIST_AFTER_ROTATION": True,  # Invalida el refresh token después de usarlo
+    "AUTH_HEADER_TYPES": ("Bearer",),  # Tipo de autenticación con "Bearer"
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +69,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173", # Ajusta esto si tu frontend está en otro puerto
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'ecommerce.urls'
 
