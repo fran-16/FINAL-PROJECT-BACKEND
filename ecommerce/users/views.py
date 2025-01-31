@@ -47,3 +47,4 @@ class UserListView(ListAPIView):
     permission_classes = [IsAuthenticated]  # 🔒 Protegemos con JWT
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+

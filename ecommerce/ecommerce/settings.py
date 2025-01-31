@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'products',
     'drf_yasg',
     "corsheaders",
+    "orders",
 ]
 
 
@@ -109,12 +110,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ecommerce_db',
         'USER': 'postgres',  # Usuario configurado
-        'PASSWORD': 'root',  # Contraseña configurada al instalar PostgreSQL
+        'PASSWORD': '447870',  # Contraseña configurada al instalar PostgreSQL
         'HOST': 'localhost',  # Servidor local
         'PORT': '5432',       # Puerto predeterminado
     }
 }
-
+# esperenxd
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -133,6 +134,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 
 # Internationalization

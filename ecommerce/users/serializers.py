@@ -24,3 +24,21 @@ class RegisterSerializer(serializers.ModelSerializer):
             role=validated_data.get("role", "user")  # Se asigna el rol predeterminado si no se proporciona
         )
         return user
+    def update(self, instance, validated_data):
+        # Actualiza los campos del usuario con los datos validados
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.phone_number = validated_data.get('phone_number', instance.phone_number)
+        instance.address = validated_data.get('address', instance.address)
+        instance.profile_picture = validated_data.get('profile_picture', instance.profile_picture)
+        instance.role = validated_data.get('role', instance.role)
+
+        # Si se proporciona una nueva contraseña, la actualizamos
+        password = validated_data.get('password', None)
+        if password:
+            instance.set_password(password)
+
+        # Guardamos los cambios en la base de datos
+        instance.save()
+        return instance
+        
