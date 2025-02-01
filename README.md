@@ -192,3 +192,7 @@ GET /auth/users/{id}/
 
 📌 **Hecho con ❤️ para el Ecommerce API** 🚀
 
+## Vamos a instalar pip install python-dotenv
+
+## CREAMOS UN ARCHIVO .ENV Y COLOCAMOS NUESTRAS CREDENCIALES
+

@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-+67_t3f%x62bg$s!(bmq@wiqq+xnpm$h8!1q2()gxl6&m(zxcs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # PERMITIMOS SOLICITUDES DE TODAS LAS RUTAS
 
 
 # Application definition
@@ -104,18 +107,21 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# postgresql://ecommerce_db_j9t1_user:
+# PeLcc7uTgqJEHVjoBckLwoadfr2wI6V7
+# @dpg-cuelu62j1k6c73ckkn70-a.virginia-postgres.render.com/
+# ecommerce_db_j9t1
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_db',
-        'USER': 'postgres',  # Usuario configurado
-        'PASSWORD': '447870',  # Contraseña configurada al instalar PostgreSQL
-        'HOST': 'localhost',  # Servidor local
-        'PORT': '5432',       # Puerto predeterminado
+        'ENGINE': os.environ("ENGINE"),
+        'NAME': os.environ("NAME"),
+        'USER': os.environ("USER"),  # Usuario configurado
+        'PASSWORD': os.environ("PASSWORD"),  # Contraseña configurada al instalar PostgreSQL
+        'HOST': os.environ("HOST")  # Servidor local
+        # 'PORT': '5432',       # Puerto predeterminado
     }
 }
-# esperenxd
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -161,3 +167,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = BASE_DIR/'static'
