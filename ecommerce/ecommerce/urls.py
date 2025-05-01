@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny
 # Configuración de Swagger
 schema_view = get_schema_view(
     openapi.Info(
-        title="Ecommerce API",
+        title="Ecommerce API FRAN",
         default_version='v1',
         description="API documentation for the Ecommerce project",
     ),
