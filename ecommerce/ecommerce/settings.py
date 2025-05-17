@@ -110,7 +110,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ecommerce_db',
         'USER': 'postgres',  # Usuario configurado
-        'PASSWORD': '447870',  # Contraseña configurada al instalar PostgreSQL
+        'PASSWORD': 'password',  # Contraseña configurada al instalar PostgreSQL
         'HOST': 'localhost',  # Servidor local
         'PORT': '5432',       # Puerto predeterminado
     }
